@@ -15,7 +15,7 @@
     // Checks to see if the user is already logged in. If so, refirect to correct page.
     if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
         $error = "success";
-        header('Location: success.php');
+        header('Location: LoggingIn.php');
     } 
         
     // Checks to see if the username and password have been entered.
@@ -23,7 +23,7 @@
     if (isset($_POST['username']) && isset($_POST['password'])) {
         if ($_POST['username'] == $username && $_POST['password'] == $password) {
             $_SESSION['loggedIn'] = true;
-            header('Location: success.php');
+            header('Location: LoggingIn.php');
         } else {
             $_SESSION['loggedIn'] = false;
             $error = "Invalid username and password!";
