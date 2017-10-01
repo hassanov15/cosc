@@ -6,8 +6,8 @@
     session_start();
 
     // Defines username and password. Retrieve however you like,
-    $username = "user";
-    $password = "password";
+    $username = array("user","hassan");
+    $password = array("password","ali");
 
     // Error message
     $error = "";
@@ -21,10 +21,14 @@
     // Checks to see if the username and password have been entered.
     // If so and are equal to the username and password defined above, log them in.
     if (isset($_POST['username']) && isset($_POST['password'])) {
-        if ($_POST['username'] == $username && $_POST['password'] == $password) {
+        if ($_POST['username'] == $username[0] && $_POST['password'] == $password[0]) {
             $_SESSION['loggedIn'] = true;
             header('Location: success.php');
-        } else {
+        } 
+		else if($_POST['username'] == $username[1] && $_POST['password'] == $password[1]) {
+	            $_SESSION['loggedIn'] = true;
+	            header('Location: success.php');
+		}else {
             $_SESSION['loggedIn'] = false;
             $error = "Invalid username and password!";
         }
