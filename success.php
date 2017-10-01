@@ -9,7 +9,7 @@
     }
 ?>
 
-<h1>Logged In!</h1>
+<h1>hello user UR Logged In!</h1>
 <form method="post" action="logout.php">
     <input type="submit" value="Logout">
 </form>
