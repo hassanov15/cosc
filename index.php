@@ -5,6 +5,7 @@
     // Start the session
     session_start();
 
+
     // Defines username and password. Retrieve however you like,
     $username = array("user","hassan");
     $password = array("password","ali");
