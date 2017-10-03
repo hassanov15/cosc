@@ -9,13 +9,15 @@
 	if (isset($_SESSION['loginCount']))
 	{
 	   $_SESSION['loginCount']++;
-	   if ($_SESSION['loginCount'] ==15)
+	   if ($_SESSION['loginCount'] ==3)
 	   {
-	     echo 'Bog Off!';
-	     exit;
+		if($_SESSION['loggedIn']== false){
+		echo 'too many attempts!'.$_SESSION['loginCount'];
+	       exit;
+		}
 	   }
 	} else {
-	   $_SESSION['loginCount'] =0 ;
+	   $_SESSION['loginCount'] == 0 ;
 		
 	}
 
@@ -46,7 +48,7 @@
 		}else {
             $_SESSION['loggedIn'] = false;
             $error = "Invalid username and password!";
-			echo" the number is ",$_SESSION['loginCount'];
+			echo" attempts are: ",$_SESSION['loginCount'];
 			//echo date('Y m d H:i:s', $_SESSION[time()]);
 			
 
