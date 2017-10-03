@@ -5,6 +5,20 @@
     // Start the session
     session_start();
 
+	 
+	if (isset($_SESSION['loginCount']))
+	{
+	   $_SESSION['loginCount']++;
+	   if ($_SESSION['loginCount'] ==15)
+	   {
+	     echo 'Bog Off!';
+	     exit;
+	   }
+	} else {
+	   $_SESSION['loginCount'] =0 ;
+		
+	}
+
 
     // Defines username and password. Retrieve however you like,
     $username = array("user","hassan");
@@ -32,6 +46,10 @@
 		}else {
             $_SESSION['loggedIn'] = false;
             $error = "Invalid username and password!";
+			echo" the number is ",$_SESSION['loginCount'];
+			//echo date('Y m d H:i:s', $_SESSION[time()]);
+			
+
         }
     }
 ?>
