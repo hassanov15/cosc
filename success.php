@@ -10,7 +10,7 @@
 	
     }else{
 		echo "Today is " . date("Y/m/d") . "<br>";
-			echo "Welcom". $_SESSION[$username];
+			echo "Welcome". $_SESSION['username'];
 			echo"<br>";
 		
 	

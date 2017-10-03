@@ -7,7 +7,8 @@
 	if(isset($_POST['attempts'])){
 		$_SESSION['attempts'] = $_SESSION['attempts'];
 		echo "attempts". $_SESSION['attempts'];
-}
+	}
+
 	 
 	if (isset($_SESSION['loginCount']))
 	{
@@ -74,13 +75,10 @@
         <form method="post" action="index.php">
             <label for="username">Username:</label><br/>
             <input type="text" name="username" id="username"><br/>
-            <input type= "submit" name="attempts" value="attempts">
-			<label for="password">Password:</label><br/>
+            <label for="password">Password:</label><br/>
             <input type="password" name="password" id="password"><br/>
-
-            
-			<input type="submit" value="Log In!">
-			
+            <input type="submit" value="Log In!">
+			<input type= "submit" name="attempts" value="attempts">
         </form>
     </body>
 </html>
