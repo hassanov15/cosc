@@ -63,6 +63,7 @@
     }
 ?>
 
+
 <html>
     <head>
         <title>Login Page</title>
@@ -78,7 +79,7 @@
             <input type="text" name="username" id="username"><br/>
             <label for="password">Password:</label><br/>
             <input type="password" name="password" id="password"><br/>
-            <input type="submit" value="Log In!">
+            <input type="submit" name="login " value="Log In!">
 			
 		
         </form>
@@ -88,3 +89,42 @@
 			</form>
 			<input type= "submit" name="attempts" value="attempts">
 </html>
+
+<?php
+
+try {
+    $db = new PDO('mysql:127.0.0.1;=$servername;dbname=cosc', 'root', '');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+if(isset($_POST['submit'])){
+      $username=$_POST['username'];
+      $password=$_POST['password'];
+if(empty($username) || empty($password)){
+echo "<p><a href= 'index.php'> TRY AGAIN</a>”;
+
+}else{
+        $query= "SELECT * FROM users WHERE username=:username AND password=:password";
+        $statement=$db->prepare($query);
+        $statement->execute(array(
+            'username' => $_POST['username'],
+            'password' => $_POST['password']
+        ));
+        $count=$statement->rowCount();
+        if($count>0){
+            $_SESSION['username']=$_POST['username'];
+            $_SESSION['is authenticated']= true;
+            header("location:success.php”);
+}
+    
+    }
+    
+    }
+catch(PDOException $e)
+    {
+    $message = $e->getMessage();
+    }
+    //$db = null;
+    if(isset( $_POST['attempts'])){
+     echo "attempts are ".$_SESSION['attempts'];
+     echo "<p><a href= 'index.php'> HOME PAGE</a>"; 
+}
+?>

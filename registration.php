@@ -1,13 +1,12 @@
 <?php
 
 try {
-   $conn = new PDO('mysql:127.0.0.1;=$servername;dbname=COSC', 'root', '');
+   $conn = new PDO('mysql:127.0.0.1;=$servername;dbname=cosc', 'root', '');
    if(isset($_POST['save'])){
    $name=$_POST['username'];
    $email=$_POST['email'];
    $pass1=$_POST['password'];
    $hash=password_hash($pass1,PASSWORD_DEFAULT);
-   //$pass=md5($pass);// hash password for security
    $insert=$conn->prepare("INSERT INTO users(username, password, email)
                values(:username,:password,:email)");
    $insert->bindParam('username',$name);
