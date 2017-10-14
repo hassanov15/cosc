@@ -2,9 +2,11 @@
 
 <?php
 
-    // Start the session
+    //Start the session
     session_start();
+
 	if(isset($_POST['attempts'])){
+	
 		$_SESSION['attempts'] = $_SESSION['attempts'];
 		echo "attempts". $_SESSION['attempts'];
 	}
@@ -13,7 +15,7 @@
 	if (isset($_SESSION['loginCount']))
 	{
 	   $_SESSION['loginCount']++;
-	   if ($_SESSION['loginCount'] ==3)
+	   if ($_SESSION['loginCount'] == 100)
 	   {
 		if($_SESSION['loggedIn']== false){
 		echo 'too many attempts!'.$_SESSION['loginCount'];
@@ -21,10 +23,9 @@
 		}
 	   }
 	} else {
-	   $_SESSION['loginCount'] == 0 ;
+	   			$_SESSION['loginCount'] = 0 ;
 		
 	}
-
 
     // Defines username and password. Retrieve however you like,
     $username = array("user","hassan");
@@ -53,8 +54,8 @@
 		}else {
             $_SESSION['loggedIn'] = false;
             $error = "Invalid username and password!";
-			echo" attempts are: ",$_SESSION['loginCount'];
-			//echo date('Y m d H:i:s', $_SESSION[time()]);
+			echo" attempts are: ". $_SESSION['loginCount'];
+		//	echo date('Y m d H:i:s', $_SESSION[time()]);
 			
 
         }
@@ -78,7 +79,12 @@
             <label for="password">Password:</label><br/>
             <input type="password" name="password" id="password"><br/>
             <input type="submit" value="Log In!">
-			<input type= "submit" name="attempts" value="attempts">
+			
+		
         </form>
     </body>
+<form action="registration.php">
+			<input type= "submit" name="Sign-Up" value="Sign-Up">
+			</form>
+			<input type= "submit" name="attempts" value="attempts">
 </html>

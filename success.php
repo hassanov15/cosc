@@ -9,11 +9,7 @@
 	
 	
     }else{
-		echo "Today is " . date("Y/m/d") . "<br>";
-			echo "Welcome". $_SESSION['username'];
-			echo"<br>";
-		
-	
+		echo "Today is " . date("Y/m/d");
 }
 ?>
 
